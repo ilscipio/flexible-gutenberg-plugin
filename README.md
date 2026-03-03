@@ -1,6 +1,6 @@
-# Gutenberg Helper
+# Flexible Gutenberg
 
-[Gutenberg Helper](https://plugins.jetbrains.com/plugin/com.ilscipio.gutenberghelper) is a JetBrains IDE plugin for WordPress block development — smart autocomplete, block.json schema validation, a block browser sidebar, a theme.json explorer, and JavaScript block scaffolding, all without leaving the IDE.
+[Flexible Gutenberg](https://plugins.jetbrains.com/plugin/com.ilscipio.gutenberghelper) is a JetBrains IDE plugin for WordPress block development — smart autocomplete, block.json schema validation, a block browser sidebar, a theme.json explorer, and JavaScript block scaffolding, all without leaving the IDE.
 
 This repository is the community hub and issue tracker for the plugin.
 
@@ -30,10 +30,10 @@ Bug reports, feature requests, and general feedback are very welcome — this is
 ## Installation
 
 **From JetBrains Marketplace:**
-Go to [Gutenberg Helper](https://plugins.jetbrains.com/plugin/com.ilscipio.gutenberghelper) and click **Install**, then restart your IDE.
+Go to [Flexible Gutenberg](https://plugins.jetbrains.com/plugin/com.ilscipio.gutenberghelper) and click **Install**, then restart your IDE.
 
 **From IDE settings:**
-Go to **File > Settings > Plugins**, search for **Gutenberg Helper**, click **Install**, and restart.
+Go to **File > Settings > Plugins**, search for **Flexible Gutenberg**, click **Install**, and restart.
 
 ## Usage
 
