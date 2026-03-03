@@ -1,82 +1,69 @@
 # Gutenberg Helper
 
-<!-- Plugin description -->
-Block editor toolkit for WordPress — autocomplete, block.json schema, block browser, theme.json, and JS scaffolding.
+[Gutenberg Helper](https://plugins.jetbrains.com/plugin/com.ilscipio.gutenberghelper) is a JetBrains IDE plugin for WordPress block development — smart autocomplete, block.json schema validation, a block browser sidebar, a theme.json explorer, and JavaScript block scaffolding, all without leaving the IDE.
 
-Write WordPress block markup faster with smart completions for the `<!-- wp: -->` comment syntax in HTML and PHP files, full `block.json` schema validation, a searchable block browser sidebar, a theme.json property explorer, and JavaScript scaffolding for custom blocks.
+This repository is the community hub and issue tracker for the plugin.
 
-## Core Features
+## Feedback and Support
 
-### Block Markup Autocomplete
-* **`<!-- wp:` completion** in HTML and PHP files — type the opening comment and get instant suggestions for all core blocks with their categories and descriptions
-* **Block attribute completion** — after inserting a block, get JSON key/value completions with allowed values (e.g. `align` offers `left`, `center`, `right`, `wide`, `full`)
-* **Self-closing vs paired** — blocks like `core/separator` and all FSE blocks auto-insert the correct self-closing or open/close comment form
+Bug reports, feature requests, and general feedback are very welcome — this is a young project and your input genuinely shapes what gets built next.
 
-### block.json Schema & Validation
-* **Full JSON schema** for `block.json` files — property completion, value validation, and inline documentation
-* **All standard fields** covered: `name`, `title`, `category`, `attributes`, `supports`, `editorScript`, `style`, `render`, `variations`, `example`, and more
-* Works in PhpStorm, IntelliJ IDEA Ultimate, and WebStorm automatically when a `block.json` file is opened
+- **GitHub issues:** [gutenberg-helper-jetbrains-plugin](https://github.com/ilscipio/gutenberg-helper-jetbrains-plugin/issues)
+- **Email:** [info@ilscipio.com](mailto:info@ilscipio.com)
+- **Ilscipio:** [www.ilscipio.com](https://www.ilscipio.com/en)
+- **Developer tools:** [aivory.net](https://aivory.net)
 
-### Block Browser Tool Window
-* **Searchable catalog** of all WordPress core blocks — Paragraph, Heading, Image, Group, Cover, Query Loop, Navigation, and more
-* **Detail panel** showing attributes, supported features, and ready-to-paste example markup
-* **Insert at caret** or **copy to clipboard** from the sidebar — no typing required
-* **Open Docs** button jumps straight to the official developer reference
+## Features
 
-### @wordpress Components Browser
-* **Browse all `@wordpress/*` React components** — elements, hooks, and utility functions across 18 packages
-* **Prop table** with types and descriptions, plus a ready-to-copy JSX snippet
-* **Insert at caret** automatically adds the correct `import { ... } from '@wordpress/...'` statement at the top of the file
+- `<!-- wp:` block name completion in HTML and PHP files, with self-closing and paired syntax automatically chosen per block
+- Block attribute JSON completion inside block comments — type, allowed values, and descriptions included
+- Full `block.json` schema validation with property completion and value checking
+- Block Browser sidebar — searchable catalog of all WordPress core blocks with example markup, insert at caret or copy to clipboard
+- `@wordpress/*` Components Browser — browse React components and hooks with prop tables and JSX snippet insertion (automatically adds the import statement)
+- Theme JSON Browser — navigate the full theme.json schema (settings, styles, customTemplates, templateParts, patterns) with v1/v2/v3 version detection
+- New > Gutenberg > Gutenberg Block action to scaffold a complete block directory (block.json, index.js, edit.js, save.js or render.php, SCSS files)
+- Live templates with `wp:` prefix for block markup (HTML/PHP), block.json attributes (JSON), and React component patterns (JS/TS)
+- Generate Pattern File action — creates a correctly formatted `patterns/slug.php` with the WordPress pattern header
+- `@wordpress/` import path completion in JavaScript and TypeScript files
+- Project auto-detection for WordPress themes, plugins, and block development projects
 
-### Theme JSON Browser
-* **Full theme.json schema reference** — settings, styles, customTemplates, templateParts, and patterns in a tree view
-* **Version-aware** — properties are tagged v1 (WP 5.8), v2 (WP 5.9–6.3), or v3 (WP 6.4+), and properties not available in your project's detected schema version are visually muted
-* **Auto-detection** — reads the `$schema` URL from your project's `theme.json` to determine the active version
-* **Insert at caret** copies the example JSON directly into your file
+## Installation
 
-### JavaScript Block Scaffolding
-* **New > Gutenberg > Gutenberg Block** — creates a complete block directory: `block.json`, `index.js`, `edit.js`, and either `save.js` (static) or `render.php` (dynamic), plus `editor.scss` and `style.scss`
-* **`@wordpress/` import completion** in JS and TS files — type `@wordpress/` and get all 18 official packages with descriptions
+**From JetBrains Marketplace:**
+Go to [Gutenberg Helper](https://plugins.jetbrains.com/plugin/com.ilscipio.gutenberghelper) and click **Install**, then restart your IDE.
+
+**From IDE settings:**
+Go to **File > Settings > Plugins**, search for **Gutenberg Helper**, click **Install**, and restart.
+
+## Usage
+
+### Block Markup Completions
+
+Open any `.php`, `.html`, or pattern file and type `<!-- wp:` to trigger completions for all WordPress core blocks. Select a block and the IDE inserts the correct comment syntax — self-closing for void blocks (separator, spacer, template parts, FSE blocks), paired open/close for content blocks.
+
+### block.json Schema
+
+Open a `block.json` file and press Ctrl+Space for property name and value completions backed by the bundled WordPress block metadata schema. Invalid values are underlined in red.
+
+### Tool Window
+
+Open **View > Tool Windows > Gutenberg** to access three tabs:
+
+- **Blocks** — browse and insert WordPress core block markup
+- **Components** — browse `@wordpress` React components and hooks, insert JSX with auto-import
+- **Theme** — navigate the full theme.json schema with version-aware filtering
+
+### Scaffolding a Block
+
+Right-click any folder in the project tree and choose **New > Gutenberg > Gutenberg Block**, fill in the namespace, slug, title, and block type (static JS or dynamic PHP), and the plugin generates the full block directory structure.
 
 ### Live Templates
-Type `wp:` to access all templates:
 
-**HTML Block Templates:**
-- `wp:paragraph`, `wp:heading`, `wp:image`, `wp:group`, `wp:columns` — core block markup
-- `wp:cover`, `wp:buttons`, `wp:quote`, `wp:list`, `wp:table`, `wp:separator`, `wp:spacer`
-- `wp:template-part`, `wp:post-title`, `wp:site-title`, `wp:navigation` — FSE blocks
+Type `wp:` in the appropriate file type and press Tab:
 
-**block.json Templates:**
-- `wp:block-json` — complete `block.json` scaffold
-- `wp:attr-string`, `wp:attr-boolean`, `wp:attr-number`, `wp:attr-array` — attribute definitions
-
-**JavaScript Templates (JS/TS files):**
-- `wp:register-block`, `wp:edit-component`, `wp:save-component`, `wp:edit-dynamic`
-- `wp:richtext`, `wp:richtext-content`, `wp:inspector-controls`
-- `wp:media-upload`, `wp:use-block-props`, `wp:set-attrs`
-- `wp:select-control`, `wp:range-control`, `wp:toggle-control`, `wp:text-control`
-- `wp:block-variation`
-
-### Generate Pattern File
-* **Tools > Gutenberg Helper > Generate Pattern File** — creates a properly formatted `patterns/slug.php` with the WordPress block pattern header and placeholder markup
-
-### Project Detection
-Automatically activates features when a project is recognised as a WordPress project by detecting any of: `wp-config.php`, `block.json`, `theme.json`, `style.css` with `Theme Name:`, or `package.json` referencing `@wordpress/blocks`.
-
-## Getting Started
-
-### Quick Start
-1. Install from JetBrains Marketplace and restart your IDE
-2. Open a WordPress theme, plugin, or block project
-3. Open any `.php` or `.html` file and type `<!-- wp:` to see block completions
-4. Open a `block.json` file and press Ctrl+Space for schema completions
-5. Open the **Gutenberg** tool window (View > Tool Windows > Gutenberg) to browse blocks, components, and theme.json properties
-
-### Productivity Tips
-* **Type `wp:` + Tab** in any HTML/PHP file for instant block markup templates
-* **Double-click** a block in the browser to insert it at the cursor
-* **Inserting a JSX component** from the Components tab automatically adds the import statement
-* **Alt+Enter** inside `block.json` for schema-aware quick fixes
+- In HTML/PHP: `wp:paragraph`, `wp:heading`, `wp:group`, `wp:cover`, `wp:columns`, `wp:image`, and all other core and FSE blocks
+- In JSON: `wp:block-json`, `wp:attr-string`, `wp:attr-boolean`, `wp:attr-number`, `wp:attr-array`
+- In JS/TS: `wp:register-block`, `wp:edit-component`, `wp:save-component`, `wp:richtext`, `wp:inspector-controls`, `wp:use-block-props`, and more
 
 ## Supported IDEs
 
@@ -84,39 +71,18 @@ Automatically activates features when a project is recognised as a WordPress pro
 - IntelliJ IDEA Ultimate 2023.3+
 - WebStorm 2023.3+
 
-## Target Audience
+## Requirements
 
-Theme developers, plugin authors, and agencies building custom Gutenberg blocks or Full Site Editing themes for WordPress.
+No external tools or runtimes required. The plugin works entirely within the IDE using bundled schema files and static data. A WordPress project to work on is all you need.
 
-## Made by Developers with a Passion for WordPress
+## Contributing
 
-The plugin is the work of [Ilscipio](https://www.ilscipio.com/):
+We welcome issues, pull requests, and suggestions. If you spot a missing block attribute, an outdated theme.json property, or a workflow that could work better, please open an issue — every report improves the tool for the whole community.
 
-<p style="text-align:center">
-<img src="https://www.ilscipio.com//wp-content/uploads/2018/11/ilscipio_soldier2-2.svg" width="200" alt="The Ilscipio Logo - A roman soldier"/>
-</p>
+## About Ilscipio
 
-We build and maintain WordPress-based platforms as part of our core technology stack and understand the day-to-day friction of block development — switching between documentation tabs, hand-writing repetitive block markup, and hunting down theme.json properties. We built this plugin to eliminate that friction.
+We are Ilscipio, developers with a passion for creating tools that make developers' lives easier. From e-commerce platforms and AI compliance tooling to JetBrains plugins, we build software we ourselves want to use.
 
-* Special discounts available for individual developers and the open source community.
+We maintain WordPress-based platforms as part of our core technology stack, which means every feature in this plugin came from a real pain point in our own workflow.
 
-## Bugs & Feature Requests
-
-This is a young project and we genuinely want your input. Bug reports, feature requests, and general feedback are very welcome. Reach out via the [GitHub repository](https://github.com/ilscipio/gutenberg-helper-jetbrains-plugin), by email at [info@ilscipio.com](mailto:info@ilscipio.com), or through the JetBrains Marketplace plugin page.
-<!-- Plugin description end -->
-
-## Build
-
-```bash
-# Build the plugin
-JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.4.1+1/Contents/Home ./gradlew buildPlugin
-
-# Skip searchable options if build hangs
-./gradlew buildPlugin -x buildSearchableOptions
-
-# Run IDE with plugin for testing
-./gradlew runIde
-
-# Compile Java sources only
-./gradlew compileJava
-```
+Visit [www.ilscipio.com](https://www.ilscipio.com) or write to [info@ilscipio.com](mailto:info@ilscipio.com) for custom plugin development, consulting, or just to say hello.
